@@ -1,0 +1,3 @@
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/test/build/CMakeFiles/rebuild_cache.dir
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/test/build/CMakeFiles/edit_cache.dir
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/test/build/CMakeFiles/AIModelAccessTest.dir

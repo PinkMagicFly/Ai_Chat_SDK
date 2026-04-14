@@ -17,7 +17,7 @@ namespace ct_log {
             if(_logger==nullptr)
             {
                 //设置全局自动刷新的日志级别，当日志级别>=logLevel时，自动刷新日志到文件
-                _logger->flush_on(logLevel);
+                spdlog::flush_on(logLevel);
                 //启用异步日志，即将日志信息存入队列中，写入操作放在单独的线程中执行，避免阻塞主线程，提高性能
                 spdlog::init_thread_pool(32768, 1);//设置异步日志队列大小为32768，线程数为1
                 if(logFilePath=="stdout")
@@ -27,7 +27,7 @@ namespace ct_log {
                 }
                 else {
                     //创建一个文件输出的日志器，日志会被写入到指定的文件中
-                    _logger = spdlog::basic_logger_mt<spdlog::async_logger>(loggerName, logFilePath);
+                    _logger = spdlog::basic_logger_mt<spdlog::async_factory>(loggerName, logFilePath);
                 }
             }
 
