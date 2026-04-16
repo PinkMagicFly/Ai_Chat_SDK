@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/ChatGPTProvider.h
+LLMProvider.h
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/LLMProvider.h
+string
+-
+map
+-
+common.h
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/common.h
+vector
+-
+functional
+-
+
 /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/DeepSeekProvider.h
 LLMProvider.h
 /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/LLMProvider.h
@@ -170,6 +184,16 @@ mutex
 spdlog/spdlog.h
 -
 
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatGPTProvider.cpp
+../include/ChatGPTProvider.h
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/ChatGPTProvider.h
+../include/util/myLog.h
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
+jsoncpp/json/json.h
+-
+../include/util/httplib.h
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/httplib.h
+
 /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.cpp
 ../include/DeepSeekProvider.h
 /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/DeepSeekProvider.h
@@ -199,6 +223,8 @@ gtest/gtest.h
 -
 ../sdk/include/DeepSeekProvider.h
 /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/DeepSeekProvider.h
+../sdk/include/ChatGPTProvider.h
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/ChatGPTProvider.h
 ../sdk/include/util/myLog.h
 /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
 

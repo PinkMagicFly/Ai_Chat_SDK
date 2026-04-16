@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "AIModelAccessTest"
   "AIModelAccessTest.pdb"
+  "CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatGPTProvider.cpp.o"
   "CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.cpp.o"
   "CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.cpp.o"
   "CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o"

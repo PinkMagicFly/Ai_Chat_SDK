@@ -6,6 +6,7 @@
 namespace ai_chat_sdk
 {
     //DeepSeekProvider类实现
+    //初始化模型
     bool DeepSeekProvider::init(const std::map<std::string, std::string>&modelConfig) {
         //从modelConfig中获取必要的配置信息，例如API密钥和端点
         auto apiKeyIt = modelConfig.find("apiKey");
@@ -300,4 +301,4 @@ namespace ai_chat_sdk
         return responseContent; 
     }
 
-}
+}//end of namespace ai_chat_sdk
