@@ -24,7 +24,7 @@ public:
     //发送消息-流式返回
     virtual std::string sendMessageStream(const std::vector<Message>& messages, 
                                    const std::map<std::string,std::string>&requestParam,
-                                   std::function<void(const std::string&,bool)>callbakc);//callback参数：第一个参数是模型返回的增量数据，第二个参数表示是否是最后一条消息
+                                   std::function<void(const std::string&,bool)>callback);//callback参数：第一个参数是模型返回的增量数据，第二个参数表示是否是最后一条消息
 
 };
 }

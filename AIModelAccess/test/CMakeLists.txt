@@ -20,8 +20,9 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 #添加头文件搜索路径
 include_directories(${CMAKE_PROJECT_INCLUDE_DIR}/../sdk/include)
 
-#查找OpenSSL库
+#查找OpenSSL库find_package(OpenSSL REQUIRED)
 find_package(OpenSSL REQUIRED)
+
 
 #添加宏定义，启用httplib库的HTTPS支持
 target_compile_definitions(AIModelAccessTest PRIVATE CPPHTTPLIB_OPENSSL_SUPPORT)

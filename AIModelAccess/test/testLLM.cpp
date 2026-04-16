@@ -31,6 +31,31 @@ TEST(DeepSeekProviderTest, SendMessageTest) {
     std::cout << "Response: " << response << std::endl;
     EXPECT_FALSE(response.empty());
 }
+TEST(DeepSeekProviderTest, SendMessageStreamTest) {
+    ai_chat_sdk::DeepSeekProvider provider;
+    std::map<std::string, std::string> config = {
+        {"apiKey", std::getenv("deepseek_apikey")}, //从环境变量获取API密钥，确保安全性
+        {"endpoint", "https://api.deepseek.com"}
+    };
+    provider.init(config);
+    std::vector<ai_chat_sdk::Message> messages = {
+        {"user", "你好，DeepSeek！"}
+    };
+    std::map<std::string, std::string> requestParam = {
+        {"temperature", "0.7"},
+        {"maxTokens", "2048"}
+    };
+    auto writechunk = [](const std::string& chunk, bool isLast){
+        INFO("Received chunk: {}", chunk);
+        if(isLast)
+        {
+            INFO("Received last chunk");
+        }
+    };
+    std::string response = provider.sendMessageStream(messages, requestParam, writechunk);
+    std::cout << "Response: " << response << std::endl;
+    EXPECT_FALSE(response.empty());
+}
 
 int main(int argc, char **argv) {
     //初始化spdlog日志系统

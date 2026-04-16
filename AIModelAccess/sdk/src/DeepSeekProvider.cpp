@@ -133,13 +133,13 @@ namespace ai_chat_sdk
         }
         //14.返回message中的content字段
         std::string content = message["content"].asString();
-        INFO("DeepSeekProvider sendMessage success, response content: {}", content);
+        //INFO("DeepSeekProvider sendMessage success, response content: {}", content);
         return content;
     }
     //发送消息-流式返回
     std::string DeepSeekProvider::sendMessageStream(const std::vector<Message>& messages, 
                                    const std::map<std::string,std::string>&requestParam,
-                                   std::function<void(const std::string&,bool)>callbakc)//callback参数：第一个参数是模型返回的增量数据，第二个参数表示是否是最后一条消息
+                                   std::function<void(const std::string&,bool)>callback)//callback参数：第一个参数是模型返回的增量数据，第二个参数表示是否是最后一条消息
     {
         //1.检测模型是否可用
         if(!isAvailable()){
@@ -267,25 +267,37 @@ namespace ai_chat_sdk
                     std::string errs;
                     std::istringstream ss(data);
                     if (!Json::parseFromStream(reader, ss, &dataJson, &errs)) {
-                        ERRO("DeepSeekProvider sendMessageStream failed: failed to parse incremental data, error: {}", errs);
-                        return false;//终止请求
+                        WARN("DeepSeekProvider sendMessageStream failed: failed to parse incremental data, error: {}", errs);
+                        continue; //解析增量数据失败了，跳过这个数据块，继续处理后续的数据块
                     }
                     //确认content字段存在且有效
                     if (!dataJson.isMember("choices") || !dataJson["choices"].isArray() || dataJson["choices"].empty() || !dataJson["choices"][0].isMember("delta")||!dataJson["choices"][0]["delta"].isMember("content")) {
-                        ERRO("DeepSeekProvider sendMessageStream failed: incremental data does not contain valid choices array with delta field");
-                        return false;//终止请求
+                        WARN("DeepSeekProvider sendMessageStream failed: incremental data does not contain valid choices array with delta field");
+                        continue; //跳过这个数据块，继续处理后续的数据块
                     }
                     std::string incrementalContent = dataJson["choices"][0]["delta"]["content"].asString();
                     responseContent += incrementalContent;//将增量内容追加到最终响应内容中
 
                     //调用回调函数，将增量内容传递给用户
-                    callbakc(incrementalContent,false);//false表示这不是最后一条消息
-
+                    callback(incrementalContent,false);//false表示这不是最后一条消息
                 }
             }
-            return true;
+            return true;//继续接受数据
         };
-        return ""; 
+
+        //12.发送请求
+        auto result = cli.send(req);
+        if (!result) {
+            ERRO("DeepSeekProvider sendMessageStream failed: no response from server, error code: {}", httplib::to_string(result.error()));
+            return "";
+        }
+        //确保流式响应已经正常结束了，才返回最终的响应内容
+        if(!streamFinished){
+            WARN("DeepSeekProvider sendMessageStream failed: stream finished flag is not set, but response has ended");
+            return "";
+        }
+
+        return responseContent; 
     }
 
 }
