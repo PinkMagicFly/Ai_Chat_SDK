@@ -28,7 +28,7 @@ namespace ai_chat_sdk
         _endpoint = endpointIt->second;
         // 这里可以添加更多的初始化逻辑，例如测试API连接等
         _isAvailable = true; // 假设初始化成功
-        INFO("ChatGPTProvider initialized success, apiKey: {}, endpoint: {}", _apiKey, _endpoint);
+        INFO("ChatGPTProvider initialized success, endpoint: {}", _endpoint);
         return true;
     }
 
@@ -246,7 +246,7 @@ namespace ai_chat_sdk
             }
             //将接收到的数据追加到buffer中
             buffer.append(data, data_length);
-            DEBG("ChatGPTProvider sendMessageStream buffer: {}", buffer);
+            INFO("ChatGPTProvider sendMessageStream buffer: {}", buffer);
             //检查是否收到了完整的一条消息（以\n\n结尾）
             size_t pos=0;
             while((pos=buffer.find("\n\n"))!=std::string::npos)
@@ -268,6 +268,7 @@ namespace ai_chat_sdk
                     //检测增量数据是否是流式响应的结束标志，通常是一个特殊的字符串，例如"[DONE]"
                     if (data == "[DONE]") {
                         streamFinished = true;
+                        callback("", true); //触发回调，通知流式返回结束
                         return true;//流式响应结束了
                     }
 
@@ -320,7 +321,7 @@ namespace ai_chat_sdk
         {
             WARN("ChatGPTProvider sendMessageStream failed: stream ended without receiving end signal");
             callback("", true); //触发回调，通知流式返回结束
-            return fullReply; //虽然流式返回没有正常结束了，但还是返回已经接收到的内容，避免用户完全收不到回复了
+            return ""; //虽然流式返回没有正常结束了，但还是返回已经接收到的内容，避免用户完全收不到回复了
         }
         return fullReply;
     }

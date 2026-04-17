@@ -12,7 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_BUILD_TYPE Debug)
 
 #添加可执行文件
-add_executable(AIModelAccessTest testLLM.cpp ../sdk/src/DeepSeekProvider.cpp ../sdk/src/util/myLog.cpp ../sdk/src/ChatGPTProvider.cpp)
+add_executable(AIModelAccessTest testLLM.cpp ../sdk/src/DeepSeekProvider.cpp ../sdk/src/util/myLog.cpp ../sdk/src/ChatGPTProvider.cpp ../sdk/src/GeminiProvider.cpp)
 
 #设置输出目录
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})

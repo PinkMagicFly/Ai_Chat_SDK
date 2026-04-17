@@ -34,6 +34,20 @@ vector
 functional
 -
 
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/GeminiProvider.h
+LLMProvider.h
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/LLMProvider.h
+string
+-
+map
+-
+common.h
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/common.h
+vector
+-
+functional
+-
+
 /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/LLMProvider.h
 string
 -
@@ -67,6 +81,8 @@ gtest/gtest.h
 /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/DeepSeekProvider.h
 ../sdk/include/ChatGPTProvider.h
 /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/ChatGPTProvider.h
+../sdk/include/GeminiProvider.h
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/GeminiProvider.h
 ../sdk/include/util/myLog.h
 /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
 

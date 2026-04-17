@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatGPTProvider.cpp" "/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/test/build/CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatGPTProvider.cpp.o"
   "/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.cpp" "/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/test/build/CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.cpp.o"
+  "/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp" "/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/test/build/CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.o"
   "/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.cpp" "/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/test/build/CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.cpp.o"
   "/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/test/testLLM.cpp" "/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/test/build/CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o"
   )

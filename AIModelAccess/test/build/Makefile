@@ -177,6 +177,33 @@ home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekPr
 	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.cpp.s
 .PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.cpp.s
 
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.o: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.o
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.o
+
+# target to build an object file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.o:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.o
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.o
+
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.i: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.i
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.i
+
+# target to preprocess a source file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.i:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.i
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.i
+
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.s: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.s
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.s
+
+# target to generate assembly for a file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.s:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.s
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.s
+
 home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.o: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.cpp.o
 
 .PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.o
@@ -246,6 +273,9 @@ help:
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.o"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.i"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.s"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.o"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.i"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.s"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.o"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.i"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.s"

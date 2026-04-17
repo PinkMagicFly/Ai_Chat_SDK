@@ -25,7 +25,7 @@ namespace ai_chat_sdk
         _endpoint = endpointIt->second;
         //这里可以添加更多的初始化逻辑，例如测试API连接等
         _isAvailable = true; //假设初始化成功
-        INFO("DeepSeekProvider initialized success, apiKey: {}, endpoint: {}", _apiKey, _endpoint);
+        INFO("DeepSeekProvider initialized success, endpoint: {}", _endpoint);
         return true;    
     }
 
@@ -259,6 +259,7 @@ namespace ai_chat_sdk
                     //检测增量数据是否是流式响应的结束标志，通常是一个特殊的字符串，例如"[DONE]"
                     if (data == "[DONE]") {
                         streamFinished = true;
+                        callback("", true); //通知调用者流式响应结束了
                         return true;//流式响应结束了
                     }
 
@@ -295,6 +296,7 @@ namespace ai_chat_sdk
         //确保流式响应已经正常结束了，才返回最终的响应内容
         if(!streamFinished){
             WARN("DeepSeekProvider sendMessageStream failed: stream finished flag is not set, but response has ended");
+            callback("", true);//通知调用者流式响应结束了
             return "";
         }
 
