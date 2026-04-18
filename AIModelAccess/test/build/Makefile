@@ -204,6 +204,33 @@ home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProv
 	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.s
 .PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.s
 
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.o: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.o
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.o
+
+# target to build an object file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.o:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.o
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.o
+
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.i: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.i
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.i
+
+# target to preprocess a source file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.i:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.i
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.i
+
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.s: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.s
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.s
+
+# target to generate assembly for a file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.s:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.s
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.s
+
 home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.o: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.cpp.o
 
 .PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.o
@@ -276,6 +303,9 @@ help:
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.o"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.i"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.s"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.o"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.i"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.s"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.o"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.i"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.s"

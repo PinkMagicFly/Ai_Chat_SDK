@@ -22,6 +22,13 @@ CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model
  /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/httplib.h
  /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
  /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.o
+ /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/LLMProvider.h
+ /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/OllamaProvider.h
+ /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/common.h
+ /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/httplib.h
+ /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
+ /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.cpp.o
  /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
  /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.cpp
@@ -30,6 +37,7 @@ CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o
  /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/DeepSeekProvider.h
  /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/GeminiProvider.h
  /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/LLMProvider.h
+ /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/OllamaProvider.h
  /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/common.h
  /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
  /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/test/testLLM.cpp

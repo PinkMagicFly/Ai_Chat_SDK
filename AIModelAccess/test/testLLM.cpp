@@ -3,6 +3,7 @@
 #include"../sdk/include/ChatGPTProvider.h"
 #include"../sdk/include/GeminiProvider.h"
 #include"../sdk/include/util/myLog.h"
+#include"../sdk/include/OllamaProvider.h"
 
 // TEST(DeepSeekProviderTest, InitializationTest) {
 //     ai_chat_sdk::DeepSeekProvider provider;
@@ -134,35 +135,55 @@
 //     EXPECT_FALSE(response.empty());
 // }
 
-TEST(GeminiProviderTest, SendMessageStreamTest) {
-    ai_chat_sdk::GeminiProvider provider;
+// TEST(GeminiProviderTest, SendMessageStreamTest) {
+//     ai_chat_sdk::GeminiProvider provider;
+//     std::map<std::string, std::string> config = {
+//         {"apiKey", std::getenv("openrouter_apikey")}, //从环境变量获取API密钥，确保安全性
+//         {"endpoint", "https://openrouter.ai"}
+//     };
+//     provider.init(config);
+//     std::vector<ai_chat_sdk::Message> messages = {
+//         {"user", "你可以做什么，你是哪个模型？"}
+//     };
+//     std::map<std::string, std::string> requestParam = {
+//         {"temperature", "0.7"},
+//         {"maxTokens", "2048"}
+//     };
+//     auto writechunk = [](const std::string& chunk, bool isLast){
+//         INFO("Received chunk: {}", chunk);
+//         if(isLast)
+//         {
+//             INFO("Received last chunk");
+//         }
+//     };
+//     std::string response = provider.sendMessageStream(messages, requestParam, writechunk);
+//     std::cout << "Response: " << response << std::endl;
+//     EXPECT_FALSE(response.empty());
+// }
+
+TEST(OllamaProviderTest, SendMessageTest) {
+    ai_chat_sdk::OllamaProvider provider;
     std::map<std::string, std::string> config = {
-        {"apiKey", std::getenv("openrouter_apikey")}, //从环境变量获取API密钥，确保安全性
-        {"endpoint", "https://openrouter.ai"}
+        {"endpoint", "http://localhost:11434"}, // Ollama默认的本地服务地址
+        {"modelName", "gemma3:270m"}, // Ollama中已安装的模型名称，确保在Ollama中已安装该模型
+        {"modelDesc", "Gemma 3是一款由Ollama提供的高性能小型语言模型，具有出色的自然语言理解和生成能力，适用于各种对话场景，提供流畅自然的交互体验。"}
     };
     provider.init(config);
     std::vector<ai_chat_sdk::Message> messages = {
-        {"user", "你可以做什么，你是哪个模型？"}
+        {"user", "你好，Ollama！"}
     };
     std::map<std::string, std::string> requestParam = {
         {"temperature", "0.7"},
-        {"maxTokens", "2048"}
+        {"num_ctx", "2048"}
     };
-    auto writechunk = [](const std::string& chunk, bool isLast){
-        INFO("Received chunk: {}", chunk);
-        if(isLast)
-        {
-            INFO("Received last chunk");
-        }
-    };
-    std::string response = provider.sendMessageStream(messages, requestParam, writechunk);
+    std::string response = provider.sendMessage(messages, requestParam);
     std::cout << "Response: " << response << std::endl;
     EXPECT_FALSE(response.empty());
 }
 
 int main(int argc, char **argv) {
     //初始化spdlog日志系统
-    ct_log::logger::initLogger("GeminiProviderTestLogger", "stdout", spdlog::level::debug);
+    ct_log::logger::initLogger("OllamaProviderTestLogger", "stdout", spdlog::level::debug);
     //初始化Google Test框架
     ::testing::InitGoogleTest(&argc, argv);
     //运行所有测试用例  
