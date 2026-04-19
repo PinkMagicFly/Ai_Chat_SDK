@@ -174,9 +174,36 @@ TEST(OllamaProviderTest, SendMessageTest) {
     };
     std::map<std::string, std::string> requestParam = {
         {"temperature", "0.7"},
-        {"num_ctx", "2048"}
+        {"maxTokens", "2048"}
     };
     std::string response = provider.sendMessage(messages, requestParam);
+    std::cout << "Response: " << response << std::endl;
+    EXPECT_FALSE(response.empty());
+}
+
+TEST(OllamaProviderTest, SendMessageStreamTest) {
+    ai_chat_sdk::OllamaProvider provider;
+    std::map<std::string, std::string> config = {
+        {"endpoint", "http://localhost:11434"}, // Ollama默认的本地服务地址
+        {"modelName", "gemma3:270m"}, // Ollama中已安装的模型名称，确保在Ollama中已安装该模型
+        {"modelDesc", "Gemma 3是一款由Ollama提供的高性能小型语言模型，具有出色的自然语言理解和生成能力，适用于各种对话场景，提供流畅自然的交互体验。"}
+    };
+    provider.init(config);
+    std::vector<ai_chat_sdk::Message> messages = {
+        {"user", "你好，Ollama！"}
+    };
+    std::map<std::string, std::string> requestParam = {
+        {"temperature", "0.7"},
+        {"maxTokens", "2048"}
+    };
+    auto writechunk = [](const std::string& chunk, bool isLast){
+        INFO("Received chunk: {}", chunk);
+        if(isLast)
+        {
+            INFO("Received last chunk");
+        }
+    };
+    std::string response = provider.sendMessageStream(messages, requestParam, writechunk);
     std::cout << "Response: " << response << std::endl;
     EXPECT_FALSE(response.empty());
 }
