@@ -232,12 +232,12 @@ namespace ai_chat_sdk
             buffer.append(data, data_length); //将接收到的数据追加到buffer中
             INFO("OllamaProvider sendMessageStream buffer: {}", buffer);
 
-            //解析buffer中的数据块，数据块之间以"\n\n"分隔
+            //解析buffer中的数据块，数据块之间以"\n"分隔
             size_t pos;
             while ((pos = buffer.find("\n")) != std::string::npos)
             {
                 std::string chunk = buffer.substr(0, pos); //获取一个完整的数据块
-                buffer.erase(0, pos + 2);                   //移除已处理的数据块和分隔符
+                buffer.erase(0, pos + 1);                   //移除已处理的数据块和分隔符
 
                 //解析该块响应数据中模型返回的有效数据
                 //处理空行和注释，注意，以:开头的行是注释行，需要忽略
