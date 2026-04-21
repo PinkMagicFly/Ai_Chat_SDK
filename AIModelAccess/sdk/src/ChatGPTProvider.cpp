@@ -67,9 +67,9 @@ namespace ai_chat_sdk
         {
             temperature = std::stod(requestParam.at("temperature"));
         }
-        if (requestParam.find("maxOutputTokens") != requestParam.end())
+        if (requestParam.find("maxTokens") != requestParam.end())
         {
-            maxOutputTokens = std::stoi(requestParam.at("maxOutputTokens"));
+            maxOutputTokens = std::stoi(requestParam.at("maxTokens"));
         }
 
         // 3.构建消息列表
@@ -170,9 +170,9 @@ namespace ai_chat_sdk
         {
             temperature = std::stod(requestParam.at("temperature"));
         }
-        if (requestParam.find("max_out_tokens") != requestParam.end())
+        if (requestParam.find("maxTokens") != requestParam.end())
         {
-            max_output_tokens = std::stoi(requestParam.at("max_out_tokens"));
+            max_output_tokens = std::stoi(requestParam.at("maxTokens"));
         }
 
         //3.构建消息列表
