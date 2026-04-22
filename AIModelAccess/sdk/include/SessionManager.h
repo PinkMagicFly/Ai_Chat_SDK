@@ -37,7 +37,7 @@ namespace ai_chat_sdk
 
     private:
         //管理所有会话key:会话ID，value:会话信息
-        std::unordered_map<std::string,Session> _sessions;
+        std::unordered_map<std::string,std::shared_ptr<Session>> _sessions;
         mutable std::mutex _sessionMutex; //保护会话数据的线程安全,支持const方法修改
         std::atomic<int64_t> _sessionIdCounter={0}; //记录会话总数,用于生成唯一会话ID
     };
