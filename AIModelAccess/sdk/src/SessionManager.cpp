@@ -5,6 +5,18 @@
 
 namespace ai_chat_sdk
 {
+    // 构造函数，初始化数据管理器
+    SessionManager::SessionManager(const std::string &dbName = "chatDB") : _dataManager(dbName)
+    {
+        // 从数据库加载会话数据到内存
+        auto sessionsFromDb = _dataManager.getAllSessions();
+        for (const auto &session : sessionsFromDb)
+        {
+            _sessions[session->_sessionId] = session; // 将数据库中的会话加载到内存中
+            // 会话消息需要时再获取取，避免一次性加载过多数据占用内存
+        }
+    }
+
     // 生成会话ID,格式为"session_时间戳_会话计数"
     std::string SessionManager::generateSessionId()
     {
@@ -31,32 +43,53 @@ namespace ai_chat_sdk
     // 创建会话，提供模型名称
     std::string SessionManager::createSession(const std::string &modelName)
     {
-        std::lock_guard<std::mutex> lock(_sessionMutex);
+        _sessionMutex.lock();                                   // 加锁保护会话数据的线程安全
         std::string sessionId = generateSessionId();            // 生成唯一会话ID
         auto newSession = std::make_shared<Session>(modelName); // 创建新的会话对象
         newSession->_sessionId = sessionId;                     // 设置会话ID
         newSession->_createdAt = std::time(nullptr);            // 设置会话创建时间
         newSession->_updatedAt = newSession->_createdAt;        // 初始化更新时间为创建时间
         _sessions[sessionId] = newSession;                      // 将新会话添加到会话管理器中
+        _sessionMutex.unlock();                                 // 解锁
+        _dataManager.insertSession(*newSession);                // 将新会话插入数据库，注意数据库操作自有一把锁，这里不要把锁嵌套进去
         return sessionId;
     }
 
     // 根据会话ID获取会话信息
-    std::shared_ptr<Session> SessionManager::getSession(const std::string &sessionId) const
+    std::shared_ptr<Session> SessionManager::getSession(const std::string &sessionId)
     {
-        std::lock_guard<std::mutex> lock(_sessionMutex);
+        //先在内存里找
+        _sessionMutex.lock(); // 加锁保护会话数据的线程安全
         auto it = _sessions.find(sessionId);
         if (it != _sessions.end())
         {
+            _sessionMutex.unlock(); // 解锁
+            //如果内存里找到了会话对象，直接返回
+            it->second->_messages = _dataManager.queryMessages(sessionId); // 从数据库查询会话的消息列表，并更新内存中的会话对象
             return it->second; // 返回找到的会话对象
         }
+        _sessionMutex.unlock(); // 解锁
+        //内存里没有找到会话对象，再去数据库里找
+        auto sessionFromDb = _dataManager.querySession(sessionId);
+        if (sessionFromDb)        {
+            //如果数据库里找到了会话对象，先把它加载到内存里，再返回
+            _sessionMutex.lock(); // 加锁保护会话数据的线程安全
+            //再次确定内存里没有这个会话对象，避免重复加载
+            if (_sessions.find(sessionId) == _sessions.end())
+            {
+                _sessions[sessionId] = sessionFromDb; // 将数据库中的会话加载到内存中
+            }
+            _sessionMutex.unlock(); // 解锁
+            return sessionFromDb; // 返回找到的会话对象
+        }
+        WARN("Session not found for sessionId: {}", sessionId);
         return nullptr; // 未找到会话返回空指针
     }
 
     // 往某个会话中添加消息
     bool SessionManager::addMessageToSession(const std::string &sessionId, const Message &message)
     {
-        std::lock_guard<std::mutex> lock(_sessionMutex);
+        _sessionMutex.lock(); // 加锁保护会话数据的线程安全
         auto it = _sessions.find(sessionId);
         if (it != _sessions.end())
         {
@@ -66,8 +99,13 @@ namespace ai_chat_sdk
             it->second->_messages.push_back(newMessage);                             // 将消息添加到会话的消息列表中
             it->second->_updatedAt = std::time(nullptr);                             // 更新会话的更新时间戳
             INFO("Message added to sessionId {}: content={}", sessionId, newMessage._content);
+            _sessionMutex.unlock(); // 解锁
+            _dataManager.insertMessage(sessionId, newMessage); // 将消息插入数据库，注意数据库操作自有一把锁，这里不要把锁嵌套进去
+            //会话时间戳已经在插入操作里进行更新了，这里就不需要再调用一次更新会话时间戳的接口了
             return true;
         }
+        _sessionMutex.unlock(); // 解锁
+        WARN("Failed to add message to sessionId {}: session not found", sessionId);
         return false; // 未找到会话返回失败
     }
 
