@@ -304,7 +304,7 @@ namespace ai_chat_sdk
             session->_sessionId = sessionIdResult;
             session->_createdAt = static_cast<std::time_t>(createdAtResult);
             session->_updatedAt = static_cast<std::time_t>(updatedAtResult);
-            //历史消息暂时不获取，有需要时通过会话id获取即可
+            // 历史消息暂时不获取，有需要时通过会话id获取即可
             sessions.push_back(session);
         }
         if (rc != SQLITE_DONE)
@@ -317,7 +317,7 @@ namespace ai_chat_sdk
         return sessions;
     }
 
-    //获取会话总数
+    // 获取会话总数
     size_t DataManager::getSessionCount() const
     {
         std::lock_guard<std::mutex> lock(_db_mutex);
@@ -336,9 +336,10 @@ namespace ai_chat_sdk
         rc = sqlite3_step(stmt);
         if (rc == SQLITE_ROW)
         {
-            count = sqlite3_column_int(stmt, 0); 
+            count = sqlite3_column_int(stmt, 0);
         }
-        else        {
+        else
+        {
             ERRO("Failed to query session count: {}", sqlite3_errmsg(_db));
         }
         // 释放资源
@@ -346,7 +347,26 @@ namespace ai_chat_sdk
         INFO("Queried session count successfully: {}", count);
         return count;
     }
-/////////////////////////////////////////////////////////////////
+
+    // 删除所有会话
+    bool DataManager::deleteAllSessions()
+    {
+        std::lock_guard<std::mutex> lock(_db_mutex);
+        // 构建删除SQL语句
+        std::string deleteSQL = "DELETE FROM Sessions;";
+        // 执行SQL语句
+        char *errMsg = nullptr;
+        int rc = sqlite3_exec(_db, deleteSQL.c_str(), nullptr, nullptr, &errMsg);
+        if (rc != SQLITE_OK)
+        {
+            ERRO("Failed to delete all sessions: {}", errMsg);
+            sqlite3_free(errMsg);
+            return false;
+        }
+        INFO("Deleted all sessions successfully");
+        return true;
+    }
+    /////////////////////////////////////////////////////////////////
     // 插入消息,注意，插入消息是还要更新会话的时间戳
     bool DataManager::insertMessage(const std::string &sessionId, const Message &message)
     {
@@ -382,8 +402,8 @@ namespace ai_chat_sdk
         INFO("Inserted message successfully, messageId: {}", message._messageid);
         return true;
     }
-    
-    //获取会话的历史消息
+
+    // 获取会话的历史消息
     std::vector<Message> DataManager::queryMessages(const std::string &sessionId) const
     {
         std::lock_guard<std::mutex> lock(_db_mutex);
@@ -393,7 +413,8 @@ namespace ai_chat_sdk
         // 准备SQL语句
         sqlite3_stmt *stmt;
         int rc = sqlite3_prepare_v2(_db, querySQL.c_str(), -1, &stmt, nullptr);
-        if (rc != SQLITE_OK)        {
+        if (rc != SQLITE_OK)
+        {
             ERRO("Failed to prepare SQL statement: {}", sqlite3_errmsg(_db));
             return messages;
         }
@@ -411,7 +432,8 @@ namespace ai_chat_sdk
             message._timestamp = static_cast<std::time_t>(timestampResult);
             messages.push_back(message);
         }
-        if (rc != SQLITE_DONE)        {
+        if (rc != SQLITE_DONE)
+        {
             ERRO("Failed to query messages: {}", sqlite3_errmsg(_db));
         }
         // 释放资源
@@ -426,10 +448,11 @@ namespace ai_chat_sdk
         std::lock_guard<std::mutex> lock(_db_mutex);
         // 构建删除SQL语句
         std::string deleteSQL = "DELETE FROM Message WHERE sessionId = ?;";
-        // 准备SQL语句  
+        // 准备SQL语句
         sqlite3_stmt *stmt;
         int rc = sqlite3_prepare_v2(_db, deleteSQL.c_str(), -1, &stmt, nullptr);
-        if (rc != SQLITE_OK)        {
+        if (rc != SQLITE_OK)
+        {
             ERRO("Failed to prepare SQL statement: {}", sqlite3_errmsg(_db));
             return false;
         }
@@ -437,7 +460,8 @@ namespace ai_chat_sdk
         sqlite3_bind_text(stmt, 1, sessionId.c_str(), -1, SQLITE_TRANSIENT);
         // 执行SQL语句
         rc = sqlite3_step(stmt);
-        if (rc != SQLITE_DONE)        {
+        if (rc != SQLITE_DONE)
+        {
             ERRO("Failed to delete messages: {}", sqlite3_errmsg(_db));
             sqlite3_finalize(stmt);
             return false;

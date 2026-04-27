@@ -32,6 +32,8 @@ namespace ai_chat_sdk
         std::vector<std::shared_ptr<Session>> getAllSessions() const;
         //获取会话总数
         size_t getSessionCount() const;
+        //删除所有会话
+        bool deleteAllSessions();
 //////////////////////////////////////////////////////////////////
         //Message相关接口
         //插入message,注意，插入消息是还要更新会话的时间戳

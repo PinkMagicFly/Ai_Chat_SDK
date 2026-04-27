@@ -10,19 +10,15 @@ namespace ai_chat_sdk
     bool DeepSeekProvider::init(const std::map<std::string, std::string>&modelConfig) {
         //从modelConfig中获取必要的配置信息，例如API密钥和端点
         auto apiKeyIt = modelConfig.find("apiKey");
-        auto endpointIt = modelConfig.find("endpoint");
-        if (apiKeyIt == modelConfig.end() || endpointIt == modelConfig.end()) {
+        if (apiKeyIt == modelConfig.end()) {
             _isAvailable = false;
             if(apiKeyIt==modelConfig.end()){
                 DEBG("DeepSeekProvider init failed: apiKey is missing in modelConfig");
             }
-            if(endpointIt==modelConfig.end()){
-                DEBG("DeepSeekProvider init failed: endpoint is missing in modelConfig");
-            }
             return false;
         }
         _apiKey = apiKeyIt->second;
-        _endpoint = endpointIt->second;
+        _endpoint = "https://api.deepseek.com"; //DeepSeek的API端点,直接写死了
         //这里可以添加更多的初始化逻辑，例如测试API连接等
         _isAvailable = true; //假设初始化成功
         INFO("DeepSeekProvider initialized success, endpoint: {}", _endpoint);

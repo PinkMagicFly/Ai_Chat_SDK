@@ -10,22 +10,17 @@ namespace ai_chat_sdk
     {
         // 从modelConfig中获取必要的配置信息，例如API密钥和端点
         auto apiKeyIt = modelConfig.find("apiKey");
-        auto endpointIt = modelConfig.find("endpoint");
-        if (apiKeyIt == modelConfig.end() || endpointIt == modelConfig.end())
+        if (apiKeyIt == modelConfig.end())
         {
             _isAvailable = false;
             if (apiKeyIt == modelConfig.end())
             {
                 DEBG("ChatGPTProvider init failed: apiKey is missing in modelConfig");
             }
-            if (endpointIt == modelConfig.end())
-            {
-                DEBG("ChatGPTProvider init failed: endpoint is missing in modelConfig");
-            }
             return false;
         }
         _apiKey = apiKeyIt->second;
-        _endpoint = endpointIt->second;
+        _endpoint = "https://openrouter.ai";//OpenRouter的API端点,直接写死了
         // 这里可以添加更多的初始化逻辑，例如测试API连接等
         _isAvailable = true; // 假设初始化成功
         INFO("ChatGPTProvider initialized success, endpoint: {}", _endpoint);
