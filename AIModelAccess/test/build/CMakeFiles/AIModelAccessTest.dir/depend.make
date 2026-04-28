@@ -8,6 +8,24 @@ CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatGPTProvider.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatGPTProvider.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatGPTProvider.cpp
 
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/ChatGPTProvider.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/ChatSDK.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/DataManager.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/DeepSeekProvider.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/GeminiProvider.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/LLMManager.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/LLMProvider.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/OllamaProvider.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/SessionManager.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/common.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp
+
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/DataManager.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/common.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp
+
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/DeepSeekProvider.h
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/LLMProvider.h
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/common.h
@@ -22,6 +40,12 @@ CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp
 
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/LLMManager.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/LLMProvider.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/common.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp
+
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/LLMProvider.h
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/OllamaProvider.h
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/common.h
@@ -29,14 +53,24 @@ CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp
 
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/DataManager.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/SessionManager.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/common.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
+CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp
+
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
 CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.cpp
 
 CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/ChatGPTProvider.h
+CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/ChatSDK.h
+CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/DataManager.h
 CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/DeepSeekProvider.h
 CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/GeminiProvider.h
+CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/LLMManager.h
 CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/LLMProvider.h
 CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/OllamaProvider.h
+CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/SessionManager.h
 CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/common.h
 CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o: /home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/include/util/myLog.h
 CMakeFiles/AIModelAccessTest.dir/testLLM.cpp.o: ../testLLM.cpp

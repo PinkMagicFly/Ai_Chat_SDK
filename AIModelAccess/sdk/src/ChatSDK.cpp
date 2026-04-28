@@ -33,7 +33,7 @@ namespace ai_chat_sdk
             INFO("Registered DeepSeekProvider for model: deepseek-chat");
         }
 
-        // openai/gpt-4o-mini
+        // gpt-4o-mini
         if (!_llmManager.isModelAvailable("openai/gpt-4o-mini"))
         {
             auto chatGPTProvider = std::make_unique<ChatGPTProvider>();
@@ -41,7 +41,7 @@ namespace ai_chat_sdk
             INFO("Registered ChatGPTProvider for model: openai/gpt-4o-mini");
         }
 
-        // google/gemini-2.0-flash-001
+        // gemini-2.0-flash-001
         if (!_llmManager.isModelAvailable("google/gemini-2.0-flash-001"))
         {
             auto geminiProvider = std::make_unique<GeminiProvider>();
@@ -76,7 +76,7 @@ namespace ai_chat_sdk
             auto apiConfig = std::dynamic_pointer_cast<APIConfig>(config); // 安全的向下转换
             if (apiConfig)
             { // 是通过API方式接入的模型配置
-                if (modelName != "deepseek-chat" || modelName != "openai/gpt-4o-mini" || modelName != "google/gemini-2.0-flash-001")
+                if (modelName != "deepseek-chat" && modelName != "openai/gpt-4o-mini" && modelName != "google/gemini-2.0-flash-001")
                 {
                     WARN("No provider registered for API model: {}, skipping initialization", modelName);
                     continue;
@@ -111,10 +111,10 @@ namespace ai_chat_sdk
             return false;
         }
 
-        if (!_llmManager.isModelAvailable(modelName))
+        if (_llmManager.isModelAvailable(modelName))
         {
-            ERRO("No provider registered for API model: {}, cannot initialize", modelName);
-            return false;
+            INFO("API model: {} is already initialized, skipping", modelName);
+            return true;
         }
 
         // 初始化模型
@@ -147,10 +147,10 @@ namespace ai_chat_sdk
             ERRO("Ollama model config is missing modelName, cannot initialize");
             return false;
         }
-        if (!_llmManager.isModelAvailable(modelName))
+        if (_llmManager.isModelAvailable(modelName))
         {
-            ERRO("No provider registered for Ollama model: {}, cannot initialize", modelName);
-            return false;
+            INFO("Ollama model: {} is already initialized, skipping", modelName);
+            return true;
         }
         // 初始化模型
         std::map<std::string, std::string> modelConfig;

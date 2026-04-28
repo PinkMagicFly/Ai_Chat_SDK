@@ -150,6 +150,60 @@ home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatGPTPro
 	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatGPTProvider.cpp.s
 .PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatGPTProvider.cpp.s
 
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.o: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.o
+
+# target to build an object file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.o
+
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.i: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.i
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.i
+
+# target to preprocess a source file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.i:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.i
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.i
+
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.s: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.s
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.s
+
+# target to generate assembly for a file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.s:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.s
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.cpp.s
+
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.o: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.o
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.o
+
+# target to build an object file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.o:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.o
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.o
+
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.i: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.i
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.i
+
+# target to preprocess a source file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.i:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.i
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.i
+
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.s: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.s
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.s
+
+# target to generate assembly for a file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.s:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.s
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.cpp.s
+
 home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.o: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.cpp.o
 
 .PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.o
@@ -204,6 +258,33 @@ home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProv
 	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.s
 .PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.cpp.s
 
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.o: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.o
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.o
+
+# target to build an object file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.o:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.o
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.o
+
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.i: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.i
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.i
+
+# target to preprocess a source file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.i:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.i
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.i
+
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.s: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.s
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.s
+
+# target to generate assembly for a file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.s:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.s
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.cpp.s
+
 home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.o: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.o
 
 .PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.o
@@ -230,6 +311,33 @@ home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProv
 home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.s:
 	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.s
 .PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.cpp.s
+
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.o: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.o
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.o
+
+# target to build an object file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.o:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.o
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.o
+
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.i: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.i
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.i
+
+# target to preprocess a source file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.i:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.i
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.i
+
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.s: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.s
+
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.s
+
+# target to generate assembly for a file
+home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.s:
+	$(MAKE) -f CMakeFiles/AIModelAccessTest.dir/build.make CMakeFiles/AIModelAccessTest.dir/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.s
+.PHONY : home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.cpp.s
 
 home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.o: home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.cpp.o
 
@@ -297,15 +405,27 @@ help:
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatGPTProvider.o"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatGPTProvider.i"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatGPTProvider.s"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.o"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.i"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/ChatSDK.s"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.o"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.i"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DataManager.s"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.o"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.i"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/DeepSeekProvider.s"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.o"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.i"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/GeminiProvider.s"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.o"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.i"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/LLMManager.s"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.o"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.i"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/OllamaProvider.s"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.o"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.i"
+	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/SessionManager.s"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.o"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.i"
 	@echo "... home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/src/util/myLog.s"

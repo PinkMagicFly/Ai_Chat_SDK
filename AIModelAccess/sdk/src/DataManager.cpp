@@ -98,15 +98,15 @@ namespace ai_chat_sdk
     // 插入会话
     bool DataManager::insertSession(const Session &session)
     {
-        std::lock_guard<std::mutex> lock(_db_mutex);
+        
         // 检查会话是否已存在
-        std::string checkSQL = "SELECT sessionId FROM Sessions WHERE sessionId = " + session._sessionId + ";";
+        std::string checkSQL = "SELECT sessionId FROM Sessions WHERE sessionId = '" + session._sessionId + "';";
         if (!executeSQL(checkSQL))
         {
             ERRO("Failed to check session existence");
             return false;
         }
-
+        std::lock_guard<std::mutex> lock(_db_mutex);
         // 如果会话不存在，则插入新会话
         // 构建插入SQL语句
         std::string insertSQL = "INSERT INTO Sessions (sessionId, modelName, createdAt, updatedAt) VALUES (?, ?, ?, ?);";
@@ -143,7 +143,13 @@ namespace ai_chat_sdk
     // 获取指定SessionId会话
     std::shared_ptr<Session> DataManager::querySession(const std::string &sessionId) const
     {
-        std::lock_guard<std::mutex> lock(_db_mutex);
+        _db_mutex.lock(); // 加锁保护数据库操作的线程安全
+         if (!_db)
+        {
+            ERRO("Database is not open");
+            _db_mutex.unlock();
+            return nullptr;
+        }
         // 构建查询SQL语句
         std::string querySQL = "SELECT modelName, createdAt, updatedAt FROM Sessions WHERE sessionId = ?;";
 
@@ -175,12 +181,13 @@ namespace ai_chat_sdk
 
         // 释放资源
         sqlite3_finalize(stmt);
-
+        
         // 创建并返回Session对象
         auto session = std::make_shared<Session>(modelNameResult);
         session->_sessionId = sessionId;
         session->_createdAt = static_cast<std::time_t>(createdAtResult);
         session->_updatedAt = static_cast<std::time_t>(updatedAtResult);
+        _db_mutex.unlock(); // 解锁
         session->_messages = queryMessages(sessionId); // 查询并设置会话的消息列表
         INFO("Session queried successfully: {}", session->_sessionId);
         return session;
@@ -370,7 +377,13 @@ namespace ai_chat_sdk
     // 插入消息,注意，插入消息是还要更新会话的时间戳
     bool DataManager::insertMessage(const std::string &sessionId, const Message &message)
     {
-        std::lock_guard<std::mutex> lock(_db_mutex);
+        _db_mutex.lock(); // 加锁保护数据库操作的线程安全
+         if (!_db)
+        {
+            ERRO("Database is not open");
+            _db_mutex.unlock();
+            return false;
+        }
         // 构建插入SQL语句
         std::string insertSQL = "INSERT INTO Message (messageId, sessionId, role, content, timestamp) VALUES (?, ?, ?, ?, ?);";
         // 准备SQL语句
@@ -398,6 +411,7 @@ namespace ai_chat_sdk
         // 释放资源
         sqlite3_finalize(stmt);
         // 更新会话的时间戳
+        _db_mutex.unlock(); // 解锁
         updateSessionTimestamp(sessionId, message._timestamp);
         INFO("Inserted message successfully, messageId: {}", message._messageid);
         return true;

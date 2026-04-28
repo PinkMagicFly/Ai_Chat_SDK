@@ -18,6 +18,10 @@ add_executable(AIModelAccessTest testLLM.cpp
 ../sdk/src/ChatGPTProvider.cpp 
 ../sdk/src/GeminiProvider.cpp
 ../sdk/src/OllamaProvider.cpp
+../sdk/src/ChatSDK.cpp
+../sdk/src/LLMManager.cpp
+../sdk/src/SessionManager.cpp
+../sdk/src/DataManager.cpp
 )
 
 #设置输出目录
@@ -34,4 +38,4 @@ find_package(OpenSSL REQUIRED)
 target_compile_definitions(AIModelAccessTest PRIVATE CPPHTTPLIB_OPENSSL_SUPPORT)
 
 #链接库
-target_link_libraries(AIModelAccessTest jsoncpp spdlog fmt gtest OpenSSL::SSL OpenSSL::Crypto pthread)
+target_link_libraries(AIModelAccessTest jsoncpp spdlog fmt gtest OpenSSL::SSL OpenSSL::Crypto pthread sqlite3)

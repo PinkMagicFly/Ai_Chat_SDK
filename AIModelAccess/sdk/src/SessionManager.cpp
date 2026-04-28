@@ -6,7 +6,7 @@
 namespace ai_chat_sdk
 {
     // 构造函数，初始化数据管理器
-    SessionManager::SessionManager(const std::string &dbName = "chatDB") : _dataManager(dbName)
+    SessionManager::SessionManager(const std::string &dbName) : _dataManager(dbName)
     {
         // 从数据库加载会话数据到内存
         auto sessionsFromDb = _dataManager.getAllSessions();
