@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <style>
+    .box{fill:#f7f9fc;stroke:#2c3e50;stroke-width:2;rx:8;ry:8}
+    .title{font:600 20px Arial;fill:#1f2d3d}
+    .text{font:16px Arial;fill:#233142}
+    .line{stroke:#2c3e50;stroke-width:2;fill:none;marker-end:url(#arrow)}
+    .inherit{stroke:#3b82f6;stroke-width:2;fill:none;marker-end:url(#arrow2)}
+    .dash{stroke:#6b7280;stroke-width:2;fill:none;stroke-dasharray:6 5;marker-end:url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2c3e50"/>
+    </marker>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#3b82f6"/>
+    </marker>
+  </defs>
+
+  <text x="420" y="35" class="title">ChatSDK Class Architecture (Simplified)</text>
+
+  <rect x="500" y="60" width="180" height="52" class="box"/><text x="550" y="92" class="text">ChatSDK</text>
+  <rect x="250" y="170" width="200" height="52" class="box"/><text x="302" y="202" class="text">SessionManager</text>
+  <rect x="750" y="170" width="180" height="52" class="box"/><text x="798" y="202" class="text">LLMManager</text>
+
+  <rect x="90" y="280" width="160" height="52" class="box"/><text x="128" y="312" class="text">DataManager</text>
+  <rect x="300" y="280" width="120" height="52" class="box"/><text x="334" y="312" class="text">Session</text>
+  <rect x="300" y="380" width="120" height="52" class="box"/><text x="330" y="412" class="text">Message</text>
+
+  <rect x="740" y="300" width="200" height="52" class="box"/><text x="794" y="332" class="text">LLMProvider</text>
+  <rect x="520" y="420" width="180" height="52" class="box"/><text x="548" y="452" class="text">DeepSeekProvider</text>
+  <rect x="720" y="420" width="180" height="52" class="box"/><text x="746" y="452" class="text">ChatGPTProvider</text>
+  <rect x="920" y="420" width="180" height="52" class="box"/><text x="952" y="452" class="text">GeminiProvider</text>
+  <rect x="720" y="520" width="220" height="52" class="box"/><text x="748" y="552" class="text">OllamaProvider</text>
+
+  <rect x="980" y="170" width="120" height="52" class="box"/><text x="1018" y="202" class="text">Config</text>
+  <rect x="920" y="260" width="120" height="52" class="box"/><text x="946" y="292" class="text">APIConfig</text>
+  <rect x="1060" y="260" width="130" height="52" class="box"/><text x="1072" y="292" class="text">OllamaConfig</text>
+
+  <path d="M590 112 L350 170" class="line"/>
+  <path d="M590 112 L840 170" class="line"/>
+  <path d="M320 222 L170 280" class="line"/>
+  <path d="M350 222 L360 280" class="line"/>
+  <path d="M360 332 L360 380" class="line"/>
+
+  <path d="M840 222 L840 300" class="line"/>
+  <path d="M610 420 L760 352" class="inherit"/>
+  <path d="M810 420 L840 352" class="inherit"/>
+  <path d="M1010 420 L900 352" class="inherit"/>
+  <path d="M830 520 L840 352" class="inherit"/>
+
+  <path d="M980 312 L1040 222" class="inherit"/>
+  <path d="M1120 312 L1040 222" class="inherit"/>
+  <path d="M680 90 L980 190" class="dash"/>
+</svg>
