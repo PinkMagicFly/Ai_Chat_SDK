@@ -1,0 +1,34 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class ChatSDK {
+  +initializeSDK(configs)
+  +createSession(modelName)
+  +sendMessage(sessionId, message)
+  +sendMessageIncremental(sessionId, message, callback)
+}
+
+class LLMManager
+class SessionManager
+class Session
+abstract class LLMProvider
+class DeepSeekProvider
+class ChatGPTProvider
+class GeminiProvider
+class OllamaProvider
+class Config
+class APIConfig
+class OllamaConfig
+
+ChatSDK --> LLMManager
+ChatSDK --> SessionManager
+SessionManager --> Session
+LLMManager --> LLMProvider
+LLMProvider <|-- DeepSeekProvider
+LLMProvider <|-- ChatGPTProvider
+LLMProvider <|-- GeminiProvider
+LLMProvider <|-- OllamaProvider
+Config <|-- APIConfig
+Config <|-- OllamaConfig
+LLMProvider ..> Config
+@enduml
