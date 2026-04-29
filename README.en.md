@@ -76,7 +76,6 @@ The following diagram is generated from the PlantUML source file `docs/diagrams/
 
 ---
 
-=======
 ## Features
 
 - Unified multi-model access (currently implemented):
