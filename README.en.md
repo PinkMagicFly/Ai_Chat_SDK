@@ -2,6 +2,26 @@
 
 A **C++17** SDK for integrating LLMs with a unified interface. It wraps both cloud model APIs and local Ollama models, and provides session management, message persistence, and both full/streaming responses.
 
+
+## Clone Repository
+
+```bash
+git clone https://gitee.com/zhibite-edu/ai-model-acess-tech.git
+cd ai-model-acess-tech
+```
+
+> If you are using a mirror/fork of this project, replace it with your own repository URL.
+
+---
+
+## Project Structure Diagram (PlantUML)
+
+The following diagram is generated from the PlantUML source file `docs/diagrams/class-architecture.puml`, showing relationships among ChatSDK, session management, model management, and providers.
+
+![ChatSDK class architecture](docs/diagrams/class-architecture.svg)
+
+---
+
 ## Features
 
 - Unified multi-model access (currently implemented):
@@ -56,6 +76,61 @@ A **C++17** SDK for integrating LLMs with a unified interface. It wraps both clo
 
 ---
 
+=======
+## Features
+
+- Unified multi-model access (currently implemented):
+  - DeepSeek: `deepseek-chat`
+  - OpenRouter (OpenAI): `openai/gpt-4o-mini`
+  - OpenRouter (Gemini): `google/gemini-2.0-flash-001`
+  - Local Ollama models (e.g. `gemma3:270m`)
+- Single `ChatSDK` entry point
+- Session management: create, query, list, delete
+- Messaging modes:
+  - Full response: `sendMessage`
+  - Streaming response: `sendMessageIncremental`
+- SQLite-based persistence for sessions and messages
+- Built-in logging (spdlog)
+
+---
+
+## Project Structure
+
+```text
+.
+├── AIModelAccess
+│   ├── sdk
+│   │   ├── CMakeLists.txt
+│   │   ├── include
+│   │   │   ├── ChatSDK.h
+│   │   │   ├── common.h
+│   │   │   ├── LLMProvider.h
+│   │   │   ├── DeepSeekProvider.h
+│   │   │   ├── ChatGPTProvider.h
+│   │   │   ├── GeminiProvider.h
+│   │   │   ├── OllamaProvider.h
+│   │   │   └── ...
+│   │   └── src
+│   └── test
+├── README.md
+└── README.en.md
+```
+
+---
+
+## Requirements
+
+- CMake >= 3.10
+- A C++17 compiler (g++ / clang++)
+- Dependencies (from `sdk/CMakeLists.txt`):
+  - `jsoncpp`
+  - `fmt`
+  - `spdlog`
+  - `sqlite3`
+  - `OpenSSL`
+
+---
+ 
 ## Build and Install
 
 From repository root:
