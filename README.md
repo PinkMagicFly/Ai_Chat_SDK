@@ -2,6 +2,25 @@
 
 一个基于 **C++17** 的大模型接入 SDK，统一封装多家模型 API 与本地 Ollama，提供会话管理、消息持久化、全量/流式回复能力，方便在 C++ 项目中快速接入 LLM。
 
+## 获取代码
+
+```bash
+git clone https://gitee.com/zhibite-edu/ai-model-acess-tech.git
+cd ai-model-acess-tech
+```
+
+> 如果你使用的是当前仓库镜像，也可以直接 `git clone <你的仓库地址>`。
+
+---
+
+## 项目结构关系图（PlantUML）
+
+下图由 PlantUML 源文件 `docs/diagrams/class-architecture.puml` 对应生成，展示了 ChatSDK、会话管理、模型管理与各 Provider 的关系。
+
+![ChatSDK 类结构图](docs/diagrams/class-architecture.svg)
+
+---
+
 ## 功能特性
 
 - 支持多模型统一接入（当前代码已实现）：
