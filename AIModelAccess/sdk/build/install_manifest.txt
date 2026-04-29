@@ -1,0 +1,13 @@
+/usr/local/lib/libai_chat_SDK.a
+/usr/local/include/ai_chat_SDK/SessionManager.h
+/usr/local/include/ai_chat_SDK/DataManager.h
+/usr/local/include/ai_chat_SDK/ChatGPTProvider.h
+/usr/local/include/ai_chat_SDK/util/httplib.h
+/usr/local/include/ai_chat_SDK/util/myLog.h
+/usr/local/include/ai_chat_SDK/ChatSDK.h
+/usr/local/include/ai_chat_SDK/DeepSeekProvider.h
+/usr/local/include/ai_chat_SDK/LLMManager.h
+/usr/local/include/ai_chat_SDK/LLMProvider.h
+/usr/local/include/ai_chat_SDK/GeminiProvider.h
+/usr/local/include/ai_chat_SDK/OllamaProvider.h
+/usr/local/include/ai_chat_SDK/common.h

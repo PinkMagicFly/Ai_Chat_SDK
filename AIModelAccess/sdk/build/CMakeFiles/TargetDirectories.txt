@@ -1,0 +1,7 @@
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/build/CMakeFiles/install/strip.dir
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/build/CMakeFiles/install/local.dir
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/build/CMakeFiles/install.dir
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/build/CMakeFiles/list_install_components.dir
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/build/CMakeFiles/rebuild_cache.dir
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/build/CMakeFiles/edit_cache.dir
+/home/zsl/GitFile/chat-sdk-access-ai-large-model/AIModelAccess/sdk/build/CMakeFiles/ai_chat_SDK.dir
