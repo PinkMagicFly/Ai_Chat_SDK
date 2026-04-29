@@ -6,6 +6,7 @@
 
 ```bash
 git clone https://gitee.com/zhibite-edu/ai-model-acess-tech.git
+or git clone https://gitee.com/zhibite-edu/ai-model-acess-tech.git
 cd ai-model-acess-tech
 ```
 
