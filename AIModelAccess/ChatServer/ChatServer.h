@@ -41,8 +41,8 @@ namespace ai_chat_server
         void stop();            // 停止服务器
         bool isRunning() const; // 检查服务器是否正在运行
     private:
-        //构建错误响应
-        std::string buildErrorResponse(const std::string &message);
+        //构建响应
+        std::string buildResponse(const std::string &message, bool success = false);
         //处理创建会话的请求
         void handleCreateSession(const httplib::Request &req, httplib::Response &res);
         //处理获取会话列表的请求
@@ -57,6 +57,9 @@ namespace ai_chat_server
         void handleSendMessage(const httplib::Request &req, httplib::Response &res);
         //处理发送消息的请求-增量返回
         void handleSendMessageStream(const httplib::Request &req, httplib::Response &res);
+
+        //设置HTTP路由规则
+        void setupRoutes();
 
 
     private:
