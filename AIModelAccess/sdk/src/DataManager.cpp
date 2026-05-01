@@ -159,6 +159,7 @@ namespace ai_chat_sdk
         if (rc != SQLITE_OK)
         {
             ERRO("Failed to prepare SQL statement: {}", sqlite3_errmsg(_db));
+            _db_mutex.unlock(); // 解锁
             return nullptr;
         }
 
@@ -171,6 +172,7 @@ namespace ai_chat_sdk
         {
             ERRO("Failed to query session: {}", sqlite3_errmsg(_db));
             sqlite3_finalize(stmt);
+            _db_mutex.unlock(); // 解锁
             return nullptr;
         }
 
@@ -392,6 +394,7 @@ namespace ai_chat_sdk
         if (rc != SQLITE_OK)
         {
             ERRO("Failed to prepare SQL statement: {}", sqlite3_errmsg(_db));
+            _db_mutex.unlock(); // 解锁
             return false;
         }
         // 绑定参数
@@ -406,6 +409,7 @@ namespace ai_chat_sdk
         {
             ERRO("Failed to insert message: {}", sqlite3_errmsg(_db));
             sqlite3_finalize(stmt);
+            _db_mutex.unlock(); // 解锁
             return false;
         }
         // 释放资源

@@ -14,7 +14,7 @@ namespace ai_chat_sdk
     std::time_t _timestamp; // 消息发送时间戳
 
     Message(const std::string &role, const std::string &content)
-        : _role(role), _content(content) {}
+        : _role(role), _content(content), _timestamp(std::time(nullptr)) {}
   };
   // 模型的公共配置信息
   struct Config

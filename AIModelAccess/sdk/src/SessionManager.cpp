@@ -63,9 +63,9 @@ namespace ai_chat_sdk
         auto it = _sessions.find(sessionId);
         if (it != _sessions.end())
         {
+            it->second->_messages = _dataManager.queryMessages(sessionId); // 从数据库查询会话的消息列表，并更新内存中的会话对象
             _sessionMutex.unlock(); // 解锁
             //如果内存里找到了会话对象，直接返回
-            it->second->_messages = _dataManager.queryMessages(sessionId); // 从数据库查询会话的消息列表，并更新内存中的会话对象
             return it->second; // 返回找到的会话对象
         }
         _sessionMutex.unlock(); // 解锁
@@ -150,21 +150,23 @@ namespace ai_chat_sdk
     // 获取会话列表
     std::vector<std::string> SessionManager::getSessionLists() const
     {
-        auto sessionsFromDb = _dataManager.getAllSessions(); // 从数据库获取所有会话对象
-        std::lock_guard<std::mutex> lock(_sessionMutex);
+        _sessionMutex.lock(); // 加锁保护会话数据的线程安全
+        
         // 创建临时对话ID列表，目的是将会话列表按会话更新时间降序排序
         std::vector<std::pair<std::time_t, std::shared_ptr<Session>>> sessionPairs;
         sessionPairs.reserve(_sessions.size());
-
+        auto _sessionsCopy = _sessions; // 复制当前内存中的会话数据，避免在排序过程中修改原数据导致线程安全问题
         // 将内存中的会话对象和数据库中的会话对象合并，确保获取到最新的会话列表
         for (const auto &pair : _sessions)
         {
             sessionPairs.emplace_back(pair.second->_updatedAt, pair.second); // 将会话的更新时间和会话对象一起存储到临时列表中
         }
+        _sessionMutex.unlock(); // 解锁
+        auto sessionsFromDb = _dataManager.getAllSessions(); // 从数据库获取所有会话对象
         for (const auto &sessionFromDb : sessionsFromDb)
         {
             // 如果内存中已经有这个会话对象了，就不需要再添加一次了，避免重复
-            if (_sessions.find(sessionFromDb->_sessionId) == _sessions.end())
+            if (_sessionsCopy.find(sessionFromDb->_sessionId) == _sessionsCopy.end())
             {
                 sessionPairs.emplace_back(sessionFromDb->_updatedAt, sessionFromDb); // 将数据库中的会话对象添加到临时列表中
             }
