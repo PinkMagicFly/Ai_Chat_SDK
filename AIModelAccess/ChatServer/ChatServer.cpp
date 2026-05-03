@@ -69,10 +69,10 @@ namespace ai_chat_server
         // 设置HTTP路由规则
         setupRoutes();
 
-        //默认页面是index.html，所以我们在www目录里放一个index.html就可以了，当然你也可以放其他的静态资源了，比如css、js、图片等，然后在index.html里引用这些资源就可以了
-        // set_base_dir方法可以设置一个静态文件目录，服务器会自动处理对这个目录下的文件的请求了，
-        //比如访问http://host:port/index.html就会返回www目录下的index.html文件了，这样就可以提供一个简单的界面了，方便测试了
-        //注意，httplib中不加index.html的话，默认也是会访问index.html的，所以访问http://host:port/也是可以访问到index.html的了
+        // 默认页面是index.html，所以我们在www目录里放一个index.html就可以了，当然你也可以放其他的静态资源了，比如css、js、图片等，然后在index.html里引用这些资源就可以了
+        //  set_base_dir方法可以设置一个静态文件目录，服务器会自动处理对这个目录下的文件的请求了，
+        // 比如访问http://host:port/index.html就会返回www目录下的index.html文件了，这样就可以提供一个简单的界面了，方便测试了
+        // 注意，httplib中不加index.html的话，默认也是会访问index.html的，所以访问http://host:port/也是可以访问到index.html的了
         _chatServer->set_base_dir("./www");
 
         // 为了不卡服务器主线程，这里启动一个新的线程来运行http服务
@@ -185,7 +185,7 @@ namespace ai_chat_server
         {
             // 获取会话信息
             auto sessionInfo = _chat_sdk->getSession(sessionId);
-            if (sessionInfo == nullptr)
+            if (sessionInfo._modelName.empty())
             {
                 WARN("Failed to get session info for session id: {}", sessionId);
                 continue; // 获取会话信息失败了，跳过这个会话，继续处理后续的会话
@@ -193,11 +193,11 @@ namespace ai_chat_server
 
             Json::Value sessionJson;
             sessionJson["id"] = sessionId;
-            sessionJson["model"] = sessionInfo->_modelName;
-            sessionJson["created_at"] = (Json::Int64)sessionInfo->_createdAt;
-            sessionJson["updated_at"] = (Json::Int64)sessionInfo->_updatedAt;
-            sessionJson["message_count"] = (Json::Int)sessionInfo->_messages.size();
-            sessionJson["first_user_message"] = sessionInfo->_messages.empty() ? "" : sessionInfo->_messages.front()._content;
+            sessionJson["model"] = sessionInfo._modelName;
+            sessionJson["created_at"] = (Json::Int64)sessionInfo._createdAt;
+            sessionJson["updated_at"] = (Json::Int64)sessionInfo._updatedAt;
+            sessionJson["message_count"] = (Json::Int)sessionInfo._messages.size();
+            sessionJson["first_user_message"] = sessionInfo._messages.empty() ? "" : sessionInfo._messages.front()._content;
             sessionsJson.append(sessionJson);
         }
 
@@ -292,7 +292,7 @@ namespace ai_chat_server
 
         // 获取会话信息
         auto sessionInfo = _chat_sdk->getSession(sessionId);
-        if (sessionInfo == nullptr)
+        if (sessionInfo._modelName.empty())
         {
             // 填充响应体，告诉客户端会话id不存在了
             std::string errorMessage = "Session not found with id: " + sessionId;
@@ -307,7 +307,7 @@ namespace ai_chat_server
         resJson["success"] = true;
         resJson["message"] = "Messages retrieved successfully";
         Json::Value messagesJson(Json::arrayValue);
-        for (const auto &message : sessionInfo->_messages)
+        for (const auto &message : sessionInfo._messages)
         {
             Json::Value messageJson;
             messageJson["role"] = message._role;
@@ -435,10 +435,17 @@ namespace ai_chat_server
                                                      sink.done(); // 告诉服务器数据发送完了，可以关闭连接了
                                                  }
                                              };
-                                             // 先发送一个空的数据库，避免客户端一直在等待数据，直到超时了，才会触发错误回调函数了
+                                             // 先发送一个空的数据，避免客户端一直在等待数据，直到超时了，才会触发错误回调函数了
                                              writeChunk("", false);
                                              // 调用ChatSDK的sendMessageStream方法来发送消息，获取模型的回复，sendMessageStream方法会持续调用writeChunk回调函数来发送数据块，直到模型回复完了或者发生错误了
-                                             _chat_sdk->sendMessageIncremental(sessionId, message, writeChunk);
+                                             std::string response = _chat_sdk->sendMessageIncremental(sessionId, message, writeChunk);
+                                             if (response.empty())
+                                             {
+                                                 // 如果模型回复失败了，发送一个特殊的错误标志，告诉客户端发生错误了
+                                                 std::string errorData = "data: [ERROR] Failed to get reply from session: " + sessionId + "\n\n";
+                                                 sink.write(errorData.c_str(), errorData.size());
+                                                 sink.done(); // 告诉服务器数据发送完了，可以关闭连接了
+                                             }
                                              return true; // 本次供给成功；流是否结束由 sink.done() 控制
                                          });
     }

@@ -168,6 +168,20 @@ namespace ai_chat_sdk
         return true;
     }
 
+    // 获取单会话的锁
+    std::shared_ptr<std::mutex> ChatSDK::getSessionMutex(const std::string &sessionId)
+    {
+        std::lock_guard<std::mutex> lock(_sessionOpMapMutex);
+        auto it = _sessionOpMap.find(sessionId);
+        if (it == _sessionOpMap.end())
+        {
+            auto mutexPtr = std::make_shared<std::mutex>();
+            _sessionOpMap[sessionId] = mutexPtr;
+            return mutexPtr;
+        }
+        return it->second;
+    }
+
     // 创建会话，提供模型名称
     std::string ChatSDK::createSession(const std::string &modelName)
     {
@@ -188,23 +202,27 @@ namespace ai_chat_sdk
             ERRO("ChatSDK createSession failed: failed to create session for model {}", modelName);
             return "";
         }
+        // 创建会话成功后，为该会话创建一个操作锁，保证同一时间只有一个线程在操作同一个会话
+        std::lock_guard<std::mutex> lock(_sessionOpMapMutex);
+        _sessionOpMap[sessionId] = std::make_shared<std::mutex>();
+
         INFO("ChatSDK createSession success: created session {} for model {}", sessionId, modelName);
         return sessionId;
     }
 
     // 获取指定会话
-    std::shared_ptr<Session> ChatSDK::getSession(const std::string &sessionId)
+    Session ChatSDK::getSession(const std::string &sessionId)
     {
         if (!_initialized)
         {
             ERRO("ChatSDK getSession failed: SDK is not initialized");
-            return nullptr;
+            return Session("");
         }
         auto session = _sessionManager.getSession(sessionId);
-        if (!session)
+        if (session._modelName.empty())
         {
             ERRO("ChatSDK getSession failed: session {} not found", sessionId);
-            return nullptr;
+            return Session("");
         }
         return session;
     }
@@ -228,11 +246,18 @@ namespace ai_chat_sdk
             ERRO("ChatSDK deleteSession failed: SDK is not initialized");
             return false;
         }
+        // 删除会话之前，先获取会话对应的锁，保证同一时间只有一个线程在操作同一个会话
+        auto sessionMutex = getSessionMutex(sessionId);
+        std::lock_guard<std::mutex> lock(*sessionMutex);
         if (!_sessionManager.deleteSession(sessionId))
         {
             ERRO("ChatSDK deleteSession failed: failed to delete session {}", sessionId);
             return false;
         }
+        // 删除会话对应的锁
+        std::lock_guard<std::mutex> maplock(_sessionOpMapMutex);
+        _sessionOpMap.erase(sessionId);
+
         INFO("ChatSDK deleteSession success: deleted session {}", sessionId);
         return true;
     }
@@ -258,11 +283,15 @@ namespace ai_chat_sdk
         }
         // 发送消息之前，先检查会话是否存在，获取会话使用的模型名称，然后调用模型管理器发送消息
         auto session = _sessionManager.getSession(sessionId);
-        if (!session)
+        if (session._modelName.empty())
         {
             ERRO("ChatSDK sendMessage failed: session {} not found", sessionId);
             return "";
         }
+
+        // 发送消息的过程中，可能会有多个线程同时在操作同一个会话，所以需要获取会话对应的锁，保证同一时间只有一个线程在操作同一个会话
+        auto sessionMutex = getSessionMutex(sessionId);
+        std::lock_guard<std::mutex> lock(*sessionMutex);
 
         // 先在会话中添加消息
         Message userMessage("user", messages);
@@ -274,10 +303,10 @@ namespace ai_chat_sdk
         std::vector<Message> messageList = _sessionManager.getSessionMessages(sessionId);
 
         // 构建请求参数
-        auto configIt = _configMap.find(session->_modelName);
+        auto configIt = _configMap.find(session._modelName);
         if (configIt == _configMap.end())
         {
-            ERRO("ChatSDK sendMessage failed: config for model {} not found", session->_modelName);
+            ERRO("ChatSDK sendMessage failed: config for model {} not found", session._modelName);
             return "";
         }
         std::map<std::string, std::string> requestParam;
@@ -285,10 +314,10 @@ namespace ai_chat_sdk
         requestParam["temperature"] = std::to_string(configIt->second->_temperature);
 
         // 调用模型管理器发送消息
-        auto response = _llmManager.sendMessage(session->_modelName, messageList, requestParam);
+        auto response = _llmManager.sendMessage(session._modelName, messageList, requestParam);
         if (response.empty())
         {
-            ERRO("ChatSDK sendMessage failed: model {} returned empty response", session->_modelName);
+            ERRO("ChatSDK sendMessage failed: model {} returned empty response", session._modelName);
             return "";
         }
 
@@ -302,7 +331,7 @@ namespace ai_chat_sdk
         {
             ERRO("ChatSDK sendMessage warning: failed to update session {} timestamp", sessionId);
         }
-        INFO("ChatSDK sendMessage success: sent message to model {}, session {}", session->_modelName, sessionId);
+        INFO("ChatSDK sendMessage success: sent message to model {}, session {}", session._modelName, sessionId);
         return response;
     }
 
@@ -316,11 +345,15 @@ namespace ai_chat_sdk
         }
         // 发送消息之前，先检查会话是否存在，获取会话使用的模型名称，然后调用模型管理器发送消息
         auto session = _sessionManager.getSession(sessionId);
-        if (!session)
+        if (session._modelName.empty())
         {
             ERRO("ChatSDK sendMessageIncremental failed: session {} not found", sessionId);
             return "";
         }
+
+        // 发送消息的过程中，可能会有多个线程同时在操作同一个会话，所以需要获取会话对应的锁，保证同一时间只有一个线程在操作同一个会话
+        auto sessionMutex = getSessionMutex(sessionId);
+        std::lock_guard<std::mutex> lock(*sessionMutex);
 
         // 先在会话中添加消息
         Message userMessage("user", messages);
@@ -332,10 +365,10 @@ namespace ai_chat_sdk
         std::vector<Message> messageList = _sessionManager.getSessionMessages(sessionId);
 
         // 构建请求参数
-        auto configIt = _configMap.find(session->_modelName);
+        auto configIt = _configMap.find(session._modelName);
         if (configIt == _configMap.end())
         {
-            ERRO("ChatSDK sendMessageIncremental failed: config for model {} not found", session->_modelName);
+            ERRO("ChatSDK sendMessageIncremental failed: config for model {} not found", session._modelName);
             return "";
         }
         std::map<std::string, std::string> requestParam;
@@ -343,10 +376,10 @@ namespace ai_chat_sdk
         requestParam["temperature"] = std::to_string(configIt->second->_temperature);
 
         // 调用模型管理器发送消息
-        auto response = _llmManager.sendMessageStream(session->_modelName, messageList, requestParam, callback);
+        auto response = _llmManager.sendMessageStream(session._modelName, messageList, requestParam, callback);
         if (response.empty())
         {
-            ERRO("ChatSDK sendMessageIncremental failed: model {} returned empty response", session->_modelName);
+            ERRO("ChatSDK sendMessageIncremental failed: model {} returned empty response", session._modelName);
             return "";
         }
 
@@ -360,7 +393,7 @@ namespace ai_chat_sdk
         {
             ERRO("ChatSDK sendMessageIncremental warning: failed to update session {} timestamp", sessionId);
         }
-        INFO("ChatSDK sendMessageIncremental success: sent message to model {}, session {}", session->_modelName, sessionId);
+        INFO("ChatSDK sendMessageIncremental success: sent message to model {}, session {}", session._modelName, sessionId);
         return response;
     }
 
